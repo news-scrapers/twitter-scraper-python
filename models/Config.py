@@ -7,7 +7,7 @@ import json
 class Config:
     def __init__(self):
         client = MongoClient(os.getenv("database_url"))
-        db = client['tweets']
+        db = client['tweets-scraping']
         self.scraping_id = None
         self.accounts = None
         self.account_list_file = None

@@ -8,12 +8,12 @@ class Tweet:
         self.scraper_id = scraper_id
 
         self.client = MongoClient(os.getenv("database_url"))
-        self.db = self.client['tweets']
+        self.db = self.client['tweets-scraping']
         self.collection=self.db.ScrapedTweets
 
     
     def serialize(self):
-        obj={"scraper_id":self.scraper_id, "text": self.tweet.text, "date":self.tweet.date, "geo": self.tweet.geo, "favorites":self.tweet.favorites,"replies": self.tweet.replies, "permalink":self.tweet.permalink, "author_id": self.tweet.author_id, "id":self.tweet.id}
+        obj={"scraper_id":self.scraper_id, "username":self.tweet.username, "retweets":self.tweet.retweets, "to":self.tweet.to, "text": self.tweet.text, "date":self.tweet.date, "geo": self.tweet.geo, "favorites":self.tweet.favorites,"replies": self.tweet.replies, "permalink":self.tweet.permalink, "author_id": self.tweet.author_id, "id":self.tweet.id}
         return obj
 
 

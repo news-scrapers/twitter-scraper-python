@@ -11,7 +11,7 @@ class IndexAccount:
         self.last_updated = None
 
         client = MongoClient(os.getenv("database_url"))
-        db = client['tweets']
+        db = client['tweets-scraping']
         self.collection=db.IndexAccount
 
 
