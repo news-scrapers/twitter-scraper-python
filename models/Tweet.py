@@ -3,8 +3,9 @@ import os
 from pymongo import MongoClient
 
 class Tweet:
-    def __init__(self, tweet):
+    def __init__(self, tweet, scraper_id):
         self.tweet = tweet
+        self.scraper_id = scraper_id
 
         self.client = MongoClient(os.getenv("database_url"))
         self.db = self.client['tweets']
@@ -12,7 +13,7 @@ class Tweet:
 
     
     def serialize(self):
-        obj={"text": self.tweet.text, "date":self.tweet.date, "geo": self.tweet.geo, "favorites":self.tweet.favorites,"replies": self.tweet.replies, "permalink":self.tweet.permalink, "author_id": self.tweet.author_id, "id":self.tweet.id}
+        obj={"scraper_id":self.scraper_id, "text": self.tweet.text, "date":self.tweet.date, "geo": self.tweet.geo, "favorites":self.tweet.favorites,"replies": self.tweet.replies, "permalink":self.tweet.permalink, "author_id": self.tweet.author_id, "id":self.tweet.id}
         return obj
 
 
