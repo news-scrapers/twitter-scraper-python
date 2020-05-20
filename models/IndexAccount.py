@@ -37,4 +37,4 @@ class IndexAccount:
 
     def update_date(self, new_last_date):
         self.last_date = new_last_date
-        self.collection.find_one_and_update( {"account" : self.account},{"$set": self.serialize()},upsert=True)
+        self.collection.find_one_and_update( {"account" : self.account, "scraper_id":self.scraper_id},{"$set": self.serialize()},upsert=True)
