@@ -13,7 +13,7 @@ class Config:
         self.account_list_file = None
         self.account_index = 0
         self.collection=db.Config
-        self.load_from_json()
+        self.load_from_env()
         self.refresh()
 
 
@@ -26,6 +26,15 @@ class Config:
                     accounts = json.load(f)
                     print(accounts)
                     self.accounts = accounts
+
+    def load_from_env(self):
+        self.account_list_file = os.getenv("account_list_file")
+        self.scraping_id = os.getenv("scraping_id")
+        if not self.account_list_file == None:
+            with open('./account_lists/'+ self.account_list_file , 'r') as f:
+                accounts = json.load(f)
+                print(accounts)
+                self.accounts = accounts
 
 
     def refresh(self):

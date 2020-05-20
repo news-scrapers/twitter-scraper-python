@@ -1,13 +1,20 @@
 version: '2.1'
 
 volumes:
-  twitter-scraper:
+    twitter-scraper-asoc:
+    twitter-scraper-ibex:
 
 
 services:
-    twitter-scraper:
+    twitter-scraper-asoc:
         build: .
         restart: always
         network_mode: "host"
         env_file:
-        - .env
+        - .env_asoc
+    twitter-scraper-ibex:
+        build: .
+        restart: always
+        network_mode: "host"
+        env_file:
+        - .env_ibex
