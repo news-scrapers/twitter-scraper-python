@@ -9,7 +9,7 @@ def main():
 
     config = Config()
 
-    scraper = AccountScrapper(config.accounts, config)
+    scraper = AccountScrapper(config)
 
     while True :
         scraper.scrap_one_day_in_each_account()

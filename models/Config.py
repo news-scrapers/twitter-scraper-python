@@ -46,6 +46,7 @@ class Config:
     def load_from_dict(self, result):
         self.accounts = result["accounts"]
         self.scraping_id = result["scraping_id"]
+        self.account_index = result["account_index"]
         self.account_list_file = result["account_list_file"]
 
     def update(self):
