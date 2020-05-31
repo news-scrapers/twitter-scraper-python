@@ -9,6 +9,7 @@ verify_ssl = true
 getoldtweets3 = "*"
 python-dotenv = "*"
 pymongo = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"

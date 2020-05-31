@@ -3,6 +3,7 @@ version: '2.1'
 volumes:
     twitter-scraper-ibex:
     twitter-scraper-asoc-peru-es:
+    twitter-scraper-empresas_peru:
 
 
 services:
@@ -12,6 +13,12 @@ services:
         network_mode: "host"
         env_file:
         - .env_ibex
+    twitter-scraper-empresas_peru:
+        build: .
+        restart: always
+        network_mode: "host"
+        env_file:
+        - .env_empresas_peru
     twitter-scraper-asoc-peru-es:
         build: .
         restart: always

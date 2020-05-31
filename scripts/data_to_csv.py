@@ -12,7 +12,8 @@ def main():
     db = client['tweets-scraping']
     collection=db.ScrapedTweets
 
-    scraping_id = "scraper_asociaciones"
+    #scraping_id = "scraper_asociaciones"
+    scraping_id = "scraper_asociaciones_peru"
 
     results = collection.find( {"scraper_id" : scraping_id})
 
