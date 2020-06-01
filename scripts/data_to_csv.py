@@ -13,7 +13,8 @@ def main():
     collection=db.ScrapedTweets
 
     #scraping_id = "scraper_asociaciones"
-    scraping_id = "scraper_asociaciones_peru"
+    scraping_id = "scraper_ibex"
+    #scraping_id = "scraper_asociaciones_peru"
 
     results = collection.find( {"scraper_id" : scraping_id})
 
