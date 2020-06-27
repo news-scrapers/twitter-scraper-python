@@ -4,11 +4,12 @@ import datetime
 from pymongo import MongoClient
 
 class IndexAccount:
-    def __init__(self, account, scraper_id):
+    def __init__(self, account, scraper_id, scraper_type):
         self.last_date = None
         self.account = account
         self.scraper_id = scraper_id
         self.last_updated = None
+        self.scraper_type = scraper_type
 
         client = MongoClient(os.getenv("database_url"))
         db = client['tweets-scraping']

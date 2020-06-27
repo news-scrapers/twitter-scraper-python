@@ -12,7 +12,7 @@ class AccountScrapper:
         self.accounts = []
         self.sleep_time_between_requests = 2
         for account_str in config.accounts:
-            account = IndexAccount(account_str, self.scraping_id)
+            account = IndexAccount(account_str, self.scraping_id, config.scraper_type)
             account.get()
             self.accounts.append(account)
             print(account)
@@ -45,7 +45,12 @@ class AccountScrapper:
 
         try:
             print("scraping " + account.account + " in period ", since,until)
-            tweetCriteria = got.manager.TweetCriteria().setUsername(account.account).setSince(since).setUntil(until)
+            if account.scraper_type == "account":
+                tweetCriteria = got.manager.TweetCriteria().setUsername(account.account).setSince(since).setUntil(until)
+            else : 
+                print("----")
+                tweetCriteria = got.manager.TweetCriteria().setQuerySearch(account.account + " lang:es").setSince(since).setUntil(until)
+
             tweets = got.manager.TweetManager.getTweets(tweetCriteria)
         except:
             time.sleep(self.sleep_time_between_requests +2)

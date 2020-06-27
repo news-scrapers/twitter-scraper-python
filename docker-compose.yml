@@ -1,20 +1,12 @@
 version: '2.1'
 
 volumes:
-    twitter-scraper-ibex:
-    twitter-scraper-empresas_peru:
-
+    twitter-scraper-suicide:
 
 services:
-    twitter-scraper-ibex:
+    twitter-scraper-suicide:
         build: .
         restart: always
         network_mode: "host"
         env_file:
-        - .env_ibex
-    twitter-scraper-empresas_peru:
-        build: .
-        restart: always
-        network_mode: "host"
-        env_file:
-        - .env_empresas_peru
+        - .env

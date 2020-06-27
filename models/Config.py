@@ -10,6 +10,7 @@ class Config:
         db = client['tweets-scraping']
         self.scraping_id = None
         self.accounts = None
+        self.scraperType = "accounts"
         self.account_list_file = None
         self.account_index = 0
         self.collection=db.Config
@@ -17,19 +18,14 @@ class Config:
         self.refresh()
 
 
-    def load_from_json(self):
-        with open('./scraping_config.json', 'r') as f:
-            result = json.load(f)
-            self.load_from_dict(result)
-            if not self.account_list_file == None:
-                with open('./account_lists/'+ self.account_list_file , 'r') as f:
-                    accounts = json.load(f)
-                    print(accounts)
-                    self.accounts = accounts
-
     def load_from_env(self):
         self.account_list_file = os.getenv("account_list_file")
         self.scraping_id = os.getenv("scraping_id")
+        self.scraper_type = os.getenv("scraper_type")
+        print("-----", os.getenv("account_list_file"), os.getenv("scraping_id"), os.getenv("scraper_type"))
+        if self.scraper_type == None:
+            self.scraperType = "accounts"
+
         if not self.account_list_file == None:
             with open('./account_lists/'+ self.account_list_file , 'r') as f:
                 accounts = json.load(f)
