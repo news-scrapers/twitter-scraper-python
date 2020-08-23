@@ -19,7 +19,6 @@ class IndexAccount:
 
     def get(self):
         result = self.collection.find_one({"account":self.account, "scraper_id":self.scraper_id})
-        print(result)
         if  (result == None):
             self.last_date = datetime.datetime.now()
             return

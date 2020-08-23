@@ -10,12 +10,12 @@ class AccountScrapper:
         self.config = config
         self.scraping_id = config.scraping_id
         self.accounts = []
-        self.sleep_time_between_requests = 2
+        self.sleep_time_between_requests = 60 * 10 
         for account_str in config.accounts:
             account = IndexAccount(account_str, self.scraping_id, config.scraper_type)
             account.get()
             self.accounts.append(account)
-            print(account)
+            print("_",account)
 
     def scrap_one_day_in_each_account(self):
         index = 0
@@ -53,7 +53,7 @@ class AccountScrapper:
 
             tweets = got.manager.TweetManager.getTweets(tweetCriteria)
         except:
-            time.sleep(self.sleep_time_between_requests +2)
+            time.sleep(self.sleep_time_between_requests)
             print("retrying scraping " + account.account + " in period ", since,until)
             tweetCriteria = got.manager.TweetCriteria().setUsername(account.account).setSince(since).setUntil(until)
             tweets = got.manager.TweetManager.getTweets(tweetCriteria)

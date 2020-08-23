@@ -29,6 +29,7 @@ class Config:
         if not self.account_list_file == None:
             with open('./account_lists/'+ self.account_list_file , 'r') as f:
                 accounts = json.load(f)
+                print("scraping list:")
                 print(accounts)
                 self.accounts = accounts
 
